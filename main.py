@@ -114,7 +114,7 @@ if __name__ == '__main__':
 
         train_e_t = time()
 
-        if epoch % 10 == 9 or epoch == 1:
+        if epoch % 5 == 0:
             """testing"""
             test_s_t = time()
             ret = test(model, user_dict, n_params)

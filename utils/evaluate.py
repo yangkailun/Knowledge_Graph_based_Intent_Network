@@ -165,7 +165,10 @@ def test(model, user_dict, n_params):
             rate_batch = model.rating(u_g_embeddings, i_g_embddings).detach().cpu()
 
         user_batch_rating_uid = zip(rate_batch, user_list_batch)
-        batch_result = pool.map(test_one_user, user_batch_rating_uid)
+        # batch_result = pool.map(test_one_user, user_batch_rating_uid)
+        batch_result = []
+        for x in user_batch_rating_uid:
+            batch_result.append(test_one_user(x))
         count += len(batch_result)
 
         for re in batch_result:
